@@ -22,8 +22,15 @@
 
 	    <!-- Collect the nav links, forms, and other content for toggling -->
 	    <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+	    	<ul>
+	    		<% if current_user %>
+	    			<li>
+	    				<%= link_to('Add Members', new_member_path, class: "btn btn-primary") %>
+	    			</li>
+	    		<% end %>
+	    	</ul>
 	      <ul class="nav navbar-nav navbar-right">
-	        <li><%= link_to("Sign In", "", class: "btn btn-info") %></li>
+	        <li><%= link_to("Sign In", "", class: "btn btn-primary") %></li>
 	      </ul>
 	    </div><!-- /.navbar-collapse -->
 	  </div><!-- /.container-fluid -->
