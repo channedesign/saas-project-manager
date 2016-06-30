@@ -1,0 +1,28 @@
+<%= form_for [@tenant, @project], html: { class: 'form-horizontal' } do |f| %>
+  <div class="form-group">
+    <%= f.label :title, class: 'control-label col-md-2' %>
+    <div class="col-md-10">
+      <%= f.text_field :title, class: 'text_field form-control' %>
+    </div>
+  </div>
+  <div class="form-group">
+    <%= f.label :details, class: 'control-label col-md-2' %>
+    <div class="col-md-10">
+      <%= f.text_field :details, class: 'text_field form-control' %>
+    </div>
+  </div>
+  <div class="form-group">
+    <%= f.label :expected_completion_date, class: 'control-label col-md-2' %>
+    <div class="col-md-10">
+      <%= f.text_field :expected_completion_date, class: 'text_field form-control datepicker' %>
+    </div>
+  </div>
+  <%= f.hidden_field :tenant_id, value: params[:tenant_id], class: 'form-control' %>
+  <div class="form-group">
+    <div class='col-md-offset-2 col-md-10'>
+      <%= f.submit nil, class: 'btn btn-primary' %>
+      <%= link_to t('.cancel', default: t("helpers.links.cancel")),
+                  root_path, class: 'btn btn-default' %>
+    </div>
+  </div>
+<% end %>

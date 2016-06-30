@@ -36,7 +36,11 @@ gem "passenger"
 gem "devise"
 gem "milia"
 gem 'bootstrap-sass', '~> 3.3.6'
+gem 'bootstrap-sass-extras'
 gem 'devise-bootstrap-views'
+gem 'haml'
+gem 'bootstrap-datepicker-rails'
+gem 'jquery-turbolinks'
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console

@@ -1,43 +1,51 @@
-<div class="jumbotron text-center">
-  <h2>Welcome to the Project Management Application</h2>
-  <p class="lead">You'll love managing your project with our SaaS application. Please take a look at our great plans</p>
-</div>
-<div class="row">
+<% if current_user %>
 
-	<div class="col-sm-4 col-sm-offset-2 box">
-		<h1>Free Plan</h1>
-		<div class="col-sm-8">
-			<ul>
-				<li>Unlimited file uploads</li>
-				<li>Responsive Design</li>
-				<li>Access anywhere</li>
-				<li>1 project</li>
-			</ul>
-		</div>
-		<div class="col-sm-4">
-			<p><strong>Price: Free</strong></p>
-		</div>
-		<div class="col-sm-12">
-			<%= link_to("Sign Up", "", class: "btn btn-primary") %>
-		</div>
+	<h2>Organization: <%= @tenant.name %></h2>
+	<%= render 'projects/list' %>
+
+
+<% else %>
+	<div class="jumbotron text-center">
+	  <h2>Welcome to the Project Management Application</h2>
+	  <p class="lead">You'll love managing your project with our SaaS application. Please take a look at our great plans</p>
 	</div>
+	<div class="row">
 
-	<div class="col-sm-4 box">
-		<h1>Premium Plan</h1>
-		<div class="col-sm-8">
-			<ul>
-				<li>Unlimited file uploads</li>
-				<li>Responsive Design</li>
-				<li>Access anywhere</li>
-				<li class="green">Unlimited projects</li>
-			</ul>
+		<div class="col-sm-4 col-sm-offset-2 box">
+			<h1>Free Plan</h1>
+			<div class="col-sm-8">
+				<ul>
+					<li>Unlimited file uploads</li>
+					<li>Responsive Design</li>
+					<li>Access anywhere</li>
+					<li>1 project</li>
+				</ul>
+			</div>
+			<div class="col-sm-4">
+				<p><strong>Price: Free</strong></p>
+			</div>
+			<div class="col-sm-12">
+				<%= link_to("Sign Up", new_user_registration_path(plan: "free"), class: "btn btn-primary") %>
+			</div>
 		</div>
-		<div class="col-sm-4">
-			<p><strong>Price: $10</strong></p>
+
+		<div class="col-sm-4 box">
+			<h1>Premium Plan</h1>
+			<div class="col-sm-8">
+				<ul>
+					<li>Unlimited file uploads</li>
+					<li>Responsive Design</li>
+					<li>Access anywhere</li>
+					<li class="green">Unlimited projects</li>
+				</ul>
+			</div>
+			<div class="col-sm-4">
+				<p><strong>Price: $10</strong></p>
+			</div>
+			<div class="col-sm-12">
+				<%= link_to("Sign Up", new_user_registration_path(plan: "premium"), class: "btn btn-primary") %>
+			</div>
 		</div>
-		<div class="col-sm-12">
-			<%= link_to("Sign Up", "", class: "btn btn-primary") %>
-		</div>
+
 	</div>
-
-</div>
+<% end %>

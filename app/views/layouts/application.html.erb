@@ -22,7 +22,7 @@
 
 	    <!-- Collect the nav links, forms, and other content for toggling -->
 	    <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
-	    	<ul>
+	    	<ul class="nav navbar-nav">
 	    		<% if current_user %>
 	    			<li>
 	    				<%= link_to('Add Members', new_member_path, class: "btn btn-primary") %>
@@ -30,12 +30,18 @@
 	    		<% end %>
 	    	</ul>
 	      <ul class="nav navbar-nav navbar-right">
-	        <li><%= link_to("Sign In", "", class: "btn btn-primary") %></li>
+	      	<% if current_user %>
+	      		<li><%= link_to(current_user.email, edit_user_registration_path, title: "Edit Profile", class: "profile_link") %></li>
+	        	<li><%= link_to("Log Out", destroy_user_session_path, title: "Log Out", method: :delete, class: "btn btn-danger") %></li>
+	        <% else %>
+	        	<li><%= link_to("Sign In", new_user_session_path, class: "btn btn-primary") %></li>
+	        <% end %>
 	      </ul>
 	    </div><!-- /.navbar-collapse -->
 	  </div><!-- /.container-fluid -->
 	</nav>
 	<div class="container">
+		<%= render partial: "shared/flash_messages" %> 
 		<%= yield %>
 	</div>
 </body>
