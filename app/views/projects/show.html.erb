@@ -16,7 +16,9 @@
       <dd><pre class="prettyprint"><%= @project.tenant_id %></pre></dd>
   </dl>
 </div>
-
+<h3>Artifacts</h3>
+<%= render "artifacts/list", artifacts: @project.artifacts %>
+<br><br>
 <div class="form-group">
   <%= link_to t('< Back to Organization Home'),
               root_path, class: 'btn btn-default'  %>

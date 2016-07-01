@@ -1,0 +1,24 @@
+<%= form_for @artifact, html: { class: 'form-horizontal' } do |f| %>
+  <div class="form-group">
+    <%= f.label :name, class: 'control-label col-md-2' %>
+    <div class="col-md-10">
+      <%= f.text_field :name, class: 'text_field form-control' %>
+    </div>
+  </div>
+  <div class="form-group">
+    <%= f.label :upload, value: 'File to upload', class: 'control-label col-md-2' %>
+    <div class="col-md-10">
+      <%= f.file_field :upload, class: 'form-control' %>
+    </div>
+  </div>
+  <%= f.hidden_field :project_id %>
+
+  <div class="form-group">
+    <div class='col-md-offset-2 col-md-10'>
+      <%= f.submit nil, class: 'btn btn-primary' %>
+      <%= link_to t('.cancel', default: t("helpers.links.cancel")),
+                  tenant_project_path(tenant_id: Tenant.current_tenant_id, id: @artifact.project_id),
+                  class: 'btn btn-default' %>
+    </div>
+  </div>
+<% end %>

@@ -1,5 +1,6 @@
 class Project < ActiveRecord::Base
   belongs_to :tenant
+  has_many :artifacts, dependent: :destroy
   validates :title, uniqueness: true
   validate :free_plan_can_only_have_one_project
 
@@ -18,5 +19,5 @@ class Project < ActiveRecord::Base
   	end
   end
 
-  
+
 end
