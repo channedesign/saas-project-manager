@@ -31,37 +31,7 @@
           <%= f.label :plan %>
           <%= f.select :plan, options_for_select(Plan.options, params[:plan]), {},  required: true, class: "form-control" %>
         </div>
-        <%= fields_for :payment do |g| %>
-          <div class="row col-sm-12">
-            <div class="form-group col-sm-4 no-padding-left">
-              <%= g.label :card_number, "Card Number", data: { stripe: 'label' } %>
-              <%= g.text_field :card_number, class: "form-control", required: true, data: { stripe: 'number' } %>
-            </div>
-            <div class="form-group col-sm-2">
-              <%= g.label :card_cvv, "Card CVV", data: { stripe: 'label' } %>
-              <%= g.text_field :card_cvv, class: "form-control", required: true, data: { stripe: 'cvv' } %>
-            </div>
-            <div class="col-sm-6 form-group">
-              <div class="col-sm-12">
-                <%= g.label :card_expires, "Card Expires", data: { stripe: 'label' } %>
-              </div> 
-              <div class="col-sm-3">
-                <%= g.select  :card_expires_month, 
-                              options_for_select(Payment.month_options),
-                              { include_blank: 'Month' },
-                              "data-stripe" => "exp-month",
-                              class: "form-control", required: true %>
-              </div> 
-              <div class="col-sm-3">
-                <%= g.select  :card_expires_year, 
-                              options_for_select(Payment.year_options.push),
-                              { include_blank: 'Year' }, 
-                              "data-stripe" => "exp-year", 
-                              class: 'form-control', required: true %>
-              </div>
-            </div>
-          </div>
-        <% end %>
+        <%= render("shared/credit_card_form") %>
       <% end %>
       <%= f.submit t('.sign_up', :default => "Sign up"), class: "btn btn-primary" %>
     <% end %>

@@ -1,0 +1,22 @@
+<script>
+  Stripe.setPublishableKey('<%= ENV["STRIPE_TEST_PUBLISHABLE_KEY"] %>');
+</script>
+
+<%= form_for @tenant, url: update_plan_path, html: { class: 'cc_form' } do |f| %>
+	<div class="form-group col-sm-12 no-side-padding">
+		<%= f.label :name, "Organization" %>
+		<span class="description">(Unique name for your group or organization for the new account)</span>
+		<%= f.text_field :name, required: true, class: "form-control" %>
+	</div>
+	<div class="col-sm-12 no-side-padding">
+		<%= f.label :plan %>
+		<%= f.select :plan, options_for_select(Plan.options, @tenant.plan), {},  required: true, class: "form-control" %>
+	</div>
+	<% if @tenant.payment.blank? %>
+		<%= render("shared/credit_card_form") %>
+	<% end %>
+	<br>
+	<div class="col-sm-12">
+		<%= f.submit "Update Plan", class: "btn btn-primary", id: "update_plan" %>
+	</div>
+<% end %>
