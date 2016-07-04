@@ -1,5 +1,6 @@
 @import "bootstrap-sprockets";
 @import "bootstrap";
+@import "font-awesome";
 
 
 /*---------------   General   -----------------*/
@@ -56,11 +57,15 @@ ul {
 /*---------------   Navigation   -----------------*/
 
 .profile_link {
-	margin-top: 20px;
 	margin-right: 20px;
 }
 
 .navbar {
+	height: 50px;
+	.btn {
+		padding: 5px;
+		margin-left: 5px;
+	}
 	ul {
 		list-style-type: none;
 	}	

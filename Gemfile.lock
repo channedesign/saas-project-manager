@@ -87,6 +87,8 @@ GEM
     devise-bootstrap-views (0.0.8)
     erubis (2.7.0)
     execjs (2.7.0)
+    font-awesome-rails (4.5.0.1)
+      railties (>= 3.2, < 5.1)
     foreman (0.78.0)
       thor (~> 0.19.1)
     globalid (0.3.6)
@@ -212,6 +214,7 @@ DEPENDENCIES
   coffee-rails (~> 4.1.0)
   devise
   devise-bootstrap-views
+  font-awesome-rails
   foreman
   haml
   jbuilder (~> 2.0)
